@@ -8,6 +8,13 @@ add more subtask for any issues that arise
 
 ## queue
 
+- [ ] 0. (6pt) last clone
+- [ ] 1. (10pt) cash only
+- [ ] 2. (30pt) select amenities
+- [ ] 3. (30pt) api status
+- [ ] 4. (24pt) fetch places
+- [ ] 5. (24pt) filter places by amenity
+
 ## extra
 
 - [ ] add a `required` list to the attributes of `BaseModel`

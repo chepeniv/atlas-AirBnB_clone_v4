@@ -1,0 +1,19 @@
+header {
+	background-color: white;
+	height: 70px;
+	width: 100%;
+	border-bottom: 1px solid #CCCCCC;
+	background-image: url("../images/hb-logo.png");
+	background-repeat: no-repeat;
+	background-position: 20px 50%;
+}
+
+/* corresponding element in html commented out as well
+.hb-logo {
+	position: relative;
+	left: 10px;
+	/* center vertically 
+	top: 50%;
+	transform: translate(0%, -50%);
+}
+*/

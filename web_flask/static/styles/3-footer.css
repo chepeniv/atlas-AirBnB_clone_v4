@@ -1,0 +1,14 @@
+:root {
+	--footer-height: 60px;
+}
+
+footer {
+	background-color: white;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	border-top: 1px solid #CCCCCC;
+	height: var(--footer-height);
+	line-height: var(--footer-height);
+	text-align: center;
+}

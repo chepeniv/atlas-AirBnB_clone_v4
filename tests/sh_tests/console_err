@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/chepe/Learning/AtlasSchool/Sandbox/atlas-AirBnB_clone_v2/./console.py", line 10, in <module>
+    from models.base_model import BaseModel
+  File "/home/chepe/Learning/AtlasSchool/Sandbox/atlas-AirBnB_clone_v2/models/__init__.py", line 9, in <module>
+    from models.engine.db_storage import DBStorage as Storage
+  File "/home/chepe/Learning/AtlasSchool/Sandbox/atlas-AirBnB_clone_v2/models/engine/db_storage.py", line 88
+    raise InvalidRequestError:
+    ^^^^^
+SyntaxError: expected 'except' or 'finally' block

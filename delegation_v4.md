@@ -17,9 +17,11 @@ add more subtask for any issues that arise
 - [ ] 1. (10pt) cash only
 - `0-hbnb.py`
 - `templates/0-hbnb.html`
+	- [ ] copy and rename needed files from `web_flask`
+	- [ ] in `0-hbnb.py` replace the exist route to `/0-hbnb/`
 
-- [ ] 2. (30pt) select amenities --
-- `1-hbnb.py`
+- [ ] 2. (30pt) select amenities
+ `1-hbnb.py`
 - `templates/1-hbnb.html`
 - `static/scripts/1-hbnb.js`
 

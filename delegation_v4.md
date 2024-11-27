@@ -8,12 +8,37 @@ add more subtask for any issues that arise
 
 ## queue
 
-- [ ] 0. (6pt) last clone
+- [ ] install `flasgger`
+
+- [ ] 0. (6pt) last clone --  `README.md`
+	- [ ] update authors
+	- [ ] update description
+
 - [ ] 1. (10pt) cash only
-- [ ] 2. (30pt) select amenities
+- `0-hbnb.py`
+- `templates/0-hbnb.html`
+
+- [ ] 2. (30pt) select amenities --
+- `1-hbnb.py`
+- `templates/1-hbnb.html`
+- `static/scripts/1-hbnb.js`
+
 - [ ] 3. (30pt) api status
+- `api/v1/app.py`
+- `web_dynamic/2-hbnb.py`
+- `web_dynamic/templates/2-hbnb.html`
+- `web_dynamic/static/styles/3-header.css`
+- `web_dynamic/static/scripts/2-hbnb.js`
+
 - [ ] 4. (24pt) fetch places
+- `web_dynamic/3-hbnb.py`
+- `web_dynamic/templates/3-hbnb.html`
+- `web_dynamic/static/scripts/3-hbnb.js`
+
 - [ ] 5. (24pt) filter places by amenity
+- `web_dynamic/4-hbnb.py`
+- `web_dynamic/templates/4-hbnb.html`
+- `web_dynamic/static/scripts/4-hbnb.js`
 
 ## extra
 

@@ -3,15 +3,19 @@
 the entry point of the api_v1 app for airbnb
 '''
 
-import os
-from api.v1.views import app_views, storage
-from flask import Flask, render_template, jsonify
-from flask_cors import CORS, cross_origin
+from models import storage
+from api.v1.views import app_views
+from os import environ
+from flask import Flask, render_template, make_response, jsonify
+from flask_cors import CORS
+from flasgger import Swagger
+from flasgger.utils import swag_from
 
 
 app = Flask(__name__)
+app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 app.register_blueprint(app_views)
-cors_setup = CORS(app, send_wildcard=True, origins=["0.0.0.0"])
+cors_setup = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 
 # @cross_origin(send_wildcard=True)
@@ -49,15 +53,22 @@ def not_found(e):
     """
     handles all 404 errors to return a json 404 file
     """
-    return jsonify({"error": "Not found"}), 404
+    return make_response(jsonify({"error": "Not found"}), 404)
+
+app.config['SWAGGER'] = {
+    'title': 'AirBnB clone Restful API',
+    'uiversion': 3
+}
+
+Swagger(app)
 
 
 if __name__ == '__main__':
-    host = os.environ.get('HBNB_API_HOST', '0.0.0.0')
-    port = os.environ.get('HBNB_API_PORT', 5000)
+    host = environ.get('HBNB_API_HOST')
+    port = environ.get('HBNB_API_PORT')
+    if not host:
+        host = "0.0.0.0"
+    if not port:
+        port = "5000"
     app.run(
-        host=host,
-        port=port,
-        threaded=True
-        # ssl_context='adhoc'
-    )
+        host=host, port=port, threaded=True)

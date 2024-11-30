@@ -8,6 +8,10 @@ header {
 	background-position: 20px 50%;
 }
 
+header .available {
+	background-color: #ff545f;
+}
+
 /* corresponding element in html commented out as well
 .hb-logo {
 	position: relative;

@@ -34,8 +34,8 @@ def storage_info():
     returns information about the storage
     type and mode currently being used
     '''
-    storage_type = os.environ.get('HBNB_TYPE_STORAGE', 'file')
-    storage_mode = os.environ.get('HBNB_ENV', 'json')
+    storage_type = environ.get('HBNB_TYPE_STORAGE', 'file')
+    storage_mode = environ.get('HBNB_ENV', 'json')
     storage_info = {"type": storage_type, "mode": storage_mode}
     return storage_info
 

@@ -161,6 +161,7 @@ And more… just ask the console, it knows things.
 One day, we dream of having a beautiful front-end, real-time rental bookings, and maybe even a billion-dollar valuation... but until then, you’ve got this neat little console to play around with.
 
 ## Contributors (Or... Who to Blame)
+* **Nash Thames** - Jaded Bartender, Reluctant Realtor, Aspiring Software Engineer
 * **John Wilson**– Wannabe Python Guru, occasional meme enthusiast.
 * **Jose 'Chepe' Olmos** – The one who said “JSON is the way.” i never actually said this
 * **AlexAndrea "Ariel" Lopez** -

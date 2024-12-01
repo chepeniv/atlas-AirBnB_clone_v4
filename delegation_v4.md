@@ -11,7 +11,7 @@ add more subtask for any issues that arise
 - [ ] install `flasgger`
 
 - [ ] 0. (6pt) last clone --  `README.md`
-	- [ ] update authors
+	- [x] update authors
 	- [ ] update description
 
 - [ ] 1. (10pt) cash only

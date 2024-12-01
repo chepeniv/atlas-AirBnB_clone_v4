@@ -19,6 +19,7 @@ def close_db(error):
     """ Remove the current SQLAlchemy Session """
     storage.close()
 
+
 @app.route("/", strict_slashes=False)
 def landing_page():
     '''
@@ -26,12 +27,6 @@ def landing_page():
     the flask server is working as expected
     '''
     return render_template('welcome.html')
-# @app.route("/", strict_slashes=False)
-# def hello():
-#     '''
-#     homepage landing that redirects to hbnb_filters()
-#     '''
-#     return redirect(url_for('hbnb'))
 
 
 @app.route('/1-hbnb', strict_slashes=False)

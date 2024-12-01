@@ -37,14 +37,15 @@ make the filters section dynamic
 - `templates/1-hbnb.html`
 - `static/scripts/1-hbnb.js`
 
-- [ ] in `1-hbnb.py` replace the route `0-hbnb` with `1-hbnb`
+- [x] in `1-hbnb.py` replace the route `0-hbnb` with `1-hbnb`
 - [ ] update `1-hbnb.html`
-	- [ ] import jquery and `static/scripts/1-hbnb.js` in the `<head>` tag
+	- [x] import jquery and `static/scripts/1-hbnb.js` in the `<head>` tag
 	- [ ] add `<input type="checkbox">` to each amenity `<li>`
 		- [ ] checkbox must be 10px to the left of the amenity name
 	- [ ] for each `input` tag of amenities
 		- [ ] add `data-id":amenity_id`
 		- [ ] add `data-name":amenity_name`
+
 - [ ] write `static/scripts/1-hbnb.js`
 	- [ ] must be executed only when the dom is loaded
 	- [ ] must use jquery

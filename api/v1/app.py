@@ -3,19 +3,15 @@
 the entry point of the api_v1 app for airbnb
 '''
 
-from models import storage
-from api.v1.views import app_views
-from os import environ
-from flask import Flask, render_template, make_response, jsonify
-from flask_cors import CORS
-from flasgger import Swagger
-from flasgger.utils import swag_from
+import os
+from api.v1.views import app_views, storage
+from flask import Flask, render_template, jsonify
+from flask_cors import CORS, cross_origin
 
 
 app = Flask(__name__)
-app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 app.register_blueprint(app_views)
-cors_setup = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
+cors_setup = CORS(app, send_wildcard=True, origins=["0.0.0.0"])
 
 
 # @cross_origin(send_wildcard=True)
@@ -34,8 +30,8 @@ def storage_info():
     returns information about the storage
     type and mode currently being used
     '''
-    storage_type = environ.get('HBNB_TYPE_STORAGE', 'file')
-    storage_mode = environ.get('HBNB_ENV', 'json')
+    storage_type = os.environ.get('HBNB_TYPE_STORAGE', 'file')
+    storage_mode = os.environ.get('HBNB_ENV', 'json')
     storage_info = {"type": storage_type, "mode": storage_mode}
     return storage_info
 
@@ -53,22 +49,15 @@ def not_found(e):
     """
     handles all 404 errors to return a json 404 file
     """
-    return make_response(jsonify({"error": "Not found"}), 404)
-
-app.config['SWAGGER'] = {
-    'title': 'AirBnB clone Restful API',
-    'uiversion': 3
-}
-
-Swagger(app)
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == '__main__':
-    host = environ.get('HBNB_API_HOST')
-    port = environ.get('HBNB_API_PORT')
-    if not host:
-        host = "0.0.0.0"
-    if not port:
-        port = "5000"
+    host = os.environ.get('HBNB_API_HOST', '0.0.0.0')
+    port = os.environ.get('HBNB_API_PORT', 5000)
     app.run(
-        host=host, port=port, threaded=True)
+        host=host,
+        port=port,
+        threaded=True
+        # ssl_context='adhoc'
+    )

@@ -8,7 +8,7 @@ add more subtask for any issues that arise
 
 ## queue
 
-- [ ] install `flasgger`
+- [x] install `flasgger`
 
 - [ ] 0. (6pt) last clone --  `README.md`
 	- [x] update authors
@@ -17,8 +17,8 @@ add more subtask for any issues that arise
 - [ ] 1. (10pt) cash only
 - `0-hbnb.py`
 - `templates/0-hbnb.html`
-	- [ ] copy and rename needed files from `web_flask`
-	- [ ] in `0-hbnb.py` replace the exist route to `/0-hbnb/`
+	- [x] copy and rename needed files from `web_flask`
+	- [x] in `0-hbnb.py` replace the exist route to `/0-hbnb/`
 
 - [ ] 2. (30pt) select amenities
  `1-hbnb.py`

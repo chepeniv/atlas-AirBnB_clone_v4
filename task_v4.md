@@ -16,12 +16,12 @@ this task is based on `web_flask`
 - `web_flask/templates/100-hbnb.html` --> `0-hbnb.html`
 - `web_flask/static/*`
 
-- [ ] copy and rename needed files from `web_flask`
-- [ ] in `0-hbnb.py` replace the exist route to `/0-hbnb/`
-- [ ] prevent asset caching done by flask
-	- [ ] add a query string to each asset
-	- [ ] add variable `cache_id` with a `uuid4()` value to `render_template`
-	- [ ] in `0-hbnb.html` add this same `uuid4()` value to each `<link>`
+- [x] copy and rename needed files from `web_flask`
+- [x] in `0-hbnb.py` replace the exist route to `/0-hbnb/`
+- [x] prevent asset caching done by flask
+	- [x] add a query string to each asset
+	- [x] add variable `cache_id` with a `uuid4()` value to `render_template`
+	- [x] in `0-hbnb.html` add this same `uuid4()` value to each `<link>`
 		- example :
 `<link
 rel="stylesheet"

@@ -105,6 +105,47 @@ python3 -m api.v1.app
 - `web_dynamic/templates/3-hbnb.html`
 - `web_dynamic/static/scripts/3-hbnb.js`
 
+- [ ] create duplicate `3-hbnb.js`
+	- [ ] replace route with `3-hbnb`
+
+- [ ] create duplicate `3-hbnb.html`
+	- [ ] replace import in `<head>` with `3-hbnb.js`
+	- [ ] "remove the entire jinja section of displaying all places" (`<article>`)
+
+- [ ] create duplicate `2-hbnb.js`
+	- [ ] request `http://0.0.0.0:5001/api/v1/places_search`
+		- [ ] add this endpoint via the link provided
+		- [ ] send a `POST` request with `content-type: application/json` with an
+			  empty dictionary in the body
+		- `curl "http://0.0.0.0:5001/api/v1/places_search" -XPOST -H "Content-Type: application/json" -d '{}'`
+		- [ ] loop through the result of the request and create an `<article>` tag
+			  representing a `Place` in the `section.places` (the owner tag in the
+			  place description may be removed)
+
+places should now be loaded from the front-end instead of from the back-end
+
+### 4.16 search
+
+- [ ] update `api/v1/views/places.py`
+	- [ ] add endpoint `POST /api/v1/places_search` that retrieves all `Place`
+		  objects dependant on the json body request
+		- [ ] json may contain
+			- [ ] `states`: list of `State` ids
+			- [ ] `cities`: list of `Cities` ids
+			- [ ] `amenities`: list of `Amenity` ids
+		- [ ] search rules :
+			- [ ] if the http request body is not valid json, raise `400` error
+				  with message `Not a JSON`
+			- [ ] if the json body is empty or each of the keys are empty,
+				  retrieve all `Place` objects
+			- [ ] if `cities` list is not empty, include all `Place` for each city
+				  id listed
+			- [ ] keys `cities` and `states` are related by set union
+				- CAUTION: do not list `cities`'s `Places` items twice
+			- [ ] if `amenities` list is not empty, limit search results ONLY to
+				  `Place` objects that match ALL `Amenity` ids listed
+				- this key relates to the others via set intersection
+
 ## 5. filter places by amenity
 
 - `web_dynamic/4-hbnb.py`

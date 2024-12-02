@@ -4,33 +4,18 @@ add more subtask for any issues that arise
 
 ## in progress
 
+- [ ] fix text display css issue with `.filters > div > h4`
+- [ ] implement no-caching for all indirectly loaded assets
+
 ## priority
 
-## queue
+- [ ] `api/v1/views/places.py`
 
-- [x] install `flasgger`
+## queue
 
 - [ ] 0. (6pt) last clone --  `README.md`
 	- [x] update authors
 	- [ ] update description
-
-- [ ] 1. (10pt) cash only
-- `0-hbnb.py`
-- `templates/0-hbnb.html`
-	- [x] copy and rename needed files from `web_flask`
-	- [x] in `0-hbnb.py` replace the exist route to `/0-hbnb/`
-
-- [ ] 2. (30pt) select amenities
- `1-hbnb.py`
-- `templates/1-hbnb.html`
-- `static/scripts/1-hbnb.js`
-
-- [ ] 3. (30pt) api status
-- `api/v1/app.py`
-- `web_dynamic/2-hbnb.py`
-- `web_dynamic/templates/2-hbnb.html`
-- `web_dynamic/static/styles/3-header.css`
-- `web_dynamic/static/scripts/2-hbnb.js`
 
 - [ ] 4. (24pt) fetch places
 - `web_dynamic/3-hbnb.py`
@@ -51,3 +36,23 @@ add more subtask for any issues that arise
 - [ ] create `data/100-dump.txt` based on `data/100-dump.sql`
 
 ## completed
+
+- [x] install `flasgger`
+
+- [x] 1. (10pt) cash only
+- `0-hbnb.py`
+- `templates/0-hbnb.html`
+	- [x] copy and rename needed files from `web_flask`
+	- [x] in `0-hbnb.py` replace the exist route to `/0-hbnb/`
+
+- [x] 2. (30pt) select amenities
+ `1-hbnb.py`
+- `templates/1-hbnb.html`
+- `static/scripts/1-hbnb.js`
+
+- [x] 3. (30pt) api status
+- `api/v1/app.py`
+- `web_dynamic/2-hbnb.py`
+- `web_dynamic/templates/2-hbnb.html`
+- `web_dynamic/static/styles/3-header.css`
+- `web_dynamic/static/scripts/2-hbnb.js`

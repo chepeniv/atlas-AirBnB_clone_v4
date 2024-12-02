@@ -7,6 +7,11 @@ add more subtask for any issues that arise
 - [ ] fix text display css issue with `.filters > div > h4`
 - [ ] implement no-caching for all indirectly loaded assets
 
+- [ ] create sql reset script ?
+- [ ] reformat `data/100-hbnb.sql` and rename to `data/100-dump.sql`
+- [ ] reformat `data/7-states_list.sql`
+- [ ] create `data/100-dump.txt` based on `data/100-dump.sql`
+
 ## priority
 
 - [ ] `api/v1/views/places.py`
@@ -31,9 +36,6 @@ add more subtask for any issues that arise
 
 - [ ] add a `required` list to the attributes of `BaseModel`
 - [ ] implement `destroy all` in console for convenience
-- [ ] reformat `data/100-hbnb.sql` and rename to `data/100-dump.sql`
-- [ ] reformat `data/7-states_list.sql`
-- [ ] create `data/100-dump.txt` based on `data/100-dump.sql`
 
 ## completed
 

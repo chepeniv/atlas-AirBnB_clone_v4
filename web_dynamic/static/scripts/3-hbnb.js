@@ -20,7 +20,6 @@ $(function () {
   });
 
   $.get('http://localhost:5001/api/v1/status/', function (data, stat) {
-    // const check = data['status'];
     if (data.status === 'OK') {
       $('div#api_status').addClass('available');
     } else {

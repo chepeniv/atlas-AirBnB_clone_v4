@@ -17,6 +17,5 @@ $(function () {
 
     const amenityValues = Object.values(amenities);
     $('div.amenities h4').text(amenityValues);
-  }
-  );
+  });
 });

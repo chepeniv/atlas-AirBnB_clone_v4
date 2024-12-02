@@ -105,14 +105,14 @@ python3 -m api.v1.app
 - `web_dynamic/templates/3-hbnb.html`
 - `web_dynamic/static/scripts/3-hbnb.js`
 
-- [ ] create duplicate `3-hbnb.js`
+- [x] create duplicate `3-hbnb.js`
 	- [ ] replace route with `3-hbnb`
 
-- [ ] create duplicate `3-hbnb.html`
+- [x] create duplicate `3-hbnb.html`
 	- [ ] replace import in `<head>` with `3-hbnb.js`
 	- [ ] "remove the entire jinja section of displaying all places" (`<article>`)
 
-- [ ] create duplicate `2-hbnb.js`
+- [x] create duplicate `3-hbnb.js`
 	- [ ] request `http://0.0.0.0:5001/api/v1/places_search`
 		- [ ] add this endpoint via the link provided
 		- [ ] send a `POST` request with `content-type: application/json` with an

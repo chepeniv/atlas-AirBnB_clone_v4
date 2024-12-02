@@ -27,7 +27,7 @@ def landing_page():
     return render_template('welcome.html')
 
 
-@app.route('/2-hbnb', strict_slashes=False)
+@app.route('/3-hbnb', strict_slashes=False)
 def hbnb():
     ''' HBNB is alive! '''
     states = storage.all(State).values()
@@ -35,7 +35,7 @@ def hbnb():
     amenities = storage.all(Amenity).values()
     amenities = list(amenities)
 
-    return render_template('2-hbnb.html',
+    return render_template('3-hbnb.html',
                            cache_id=uuid4(),
                            states=states,
                            amenities=amenities)

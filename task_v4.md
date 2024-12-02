@@ -106,15 +106,15 @@ python3 -m api.v1.app
 - `web_dynamic/static/scripts/3-hbnb.js`
 
 - [x] create duplicate `3-hbnb.js`
-	- [ ] replace route with `3-hbnb`
+	- [x] replace route with `3-hbnb`
 
 - [x] create duplicate `3-hbnb.html`
-	- [ ] replace import in `<head>` with `3-hbnb.js`
-	- [ ] "remove the entire jinja section of displaying all places" (`<article>`)
+	- [x] replace import in `<head>` with `3-hbnb.js`
+	- [x] "remove the entire jinja section of displaying all places" (`<article>`)
 
 - [x] create duplicate `3-hbnb.js`
-	- [ ] request `http://0.0.0.0:5001/api/v1/places_search`
-		- [ ] add this endpoint via the link provided
+	- [x] request `http://0.0.0.0:5001/api/v1/places_search`
+		- [x] add this endpoint via the link provided
 		- [ ] send a `POST` request with `content-type: application/json` with an
 			  empty dictionary in the body
 		- `curl "http://0.0.0.0:5001/api/v1/places_search" -XPOST -H "Content-Type: application/json" -d '{}'`
@@ -127,7 +127,7 @@ places should now be loaded from the front-end instead of from the back-end
 ### 4.16 search
 
 - [ ] update `api/v1/views/places.py`
-	- [ ] add endpoint `POST /api/v1/places_search` that retrieves all `Place`
+	- [x] add endpoint `POST /api/v1/places_search` that retrieves all `Place`
 		  objects dependant on the json body request
 		- [ ] json may contain
 			- [ ] `states`: list of `State` ids

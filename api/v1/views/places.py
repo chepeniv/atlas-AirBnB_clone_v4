@@ -6,6 +6,18 @@ from api.v1.views.service_calls import *
 from models.city import City
 from models.place import Place
 
+@view_route('/places_search', 'POST')
+def create_place(city_id):
+    '''
+    retrieves places based on given json object
+    '''
+    # json keys states, cities, amenties
+    # if json invalid, return 400
+    # if json (or every key) is empty return all places
+    # caution: avoid duplicate items
+    # filter by ALL amenities given
+    pass
+
 
 @view_route('/cities/<city_id>/places', 'POST')
 def create_place(city_id):

@@ -1,19 +1,27 @@
-$(function () { // function executes once DOM is loaded
-  const amen = {};
-  $('div.amenities input[type="checkbox"]').change(function () { // listen for changes on checkbox
-    if ($(this).is(':checked')) {
-      amen[$(this).data('id')] = $(this).data('name'); // if checked, add to amen
-    } else {
-      delete amen[$(this).data('id')]; // if not, delete from amen
-    }
-    $('div.amenities h4').text(Object.values(amen).join(', ')); // display amen list
-  }
-  );
-});
+#!/usr/bin/node
+/* global $ */
 
 $(function () {
-  $.get('http://0.0.0.0:5001/api/v1/status/', function (data, status) {
-    if (status === 'OK') {
+  const amenities = {};
+
+  $('div.amenities input[type="checkbox"]').change(function () {
+    const element = $(this);
+    const dataId = element.attr('data-id');
+    const dataName = element.attr('data-name');
+
+    if (element.is(':checked')) {
+      amenities[dataId] = dataName;
+    } else {
+      delete amenities[dataId];
+    }
+
+    const amenityValues = Object.values(amenities);
+    $('div.amenities h4').text(amenityValues);
+  });
+
+  $.get('http://localhost:5001/api/v1/status/', function (data, stat) {
+    const check = data['status'];
+    if (check === 'OK') {
       $('div#api_status').addClass('available');
     } else {
       $('div#api_status').removeClass('available');

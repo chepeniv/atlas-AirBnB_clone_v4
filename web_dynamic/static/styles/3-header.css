@@ -8,16 +8,18 @@ header {
 	background-position: 20px 50%;
 }
 
-header .available {
-	background-color: #ff545f;
+#api_status {
+	position: relative;
+	float: right;
+	margin-right: 30px;
+	background-color: #cccccc;
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+	top: 50%;
+	transform: translate(0, -50%);
 }
 
-/* corresponding element in html commented out as well
-.hb-logo {
-	position: relative;
-	left: 10px;
-	/* center vertically 
-	top: 50%;
-	transform: translate(0%, -50%);
+.available {
+	background-color: #ff545f !important;
 }
-*/

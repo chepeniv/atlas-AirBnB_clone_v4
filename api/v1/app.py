@@ -11,7 +11,10 @@ from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
-cors_setup = CORS(app, send_wildcard=True, origins=["0.0.0.0"])
+cors_setup = CORS(
+    app,
+    send_wildcard=True,
+    resources={r"/api/v1/*": {"origins": "*"}})
 
 
 # @cross_origin(send_wildcard=True)
@@ -54,7 +57,7 @@ def not_found(e):
 
 if __name__ == '__main__':
     host = os.environ.get('HBNB_API_HOST', '0.0.0.0')
-    port = os.environ.get('HBNB_API_PORT', 5000)
+    port = os.environ.get('HBNB_API_PORT', 5001)
     app.run(
         host=host,
         port=port,

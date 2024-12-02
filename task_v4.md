@@ -46,13 +46,13 @@ make the filters section dynamic
 		- [x] add `data-id=":amenity_id"`
 		- [x] add `data-name=":amenity_name"`
 
-- [ ] write `static/scripts/1-hbnb.js`
-	- [ ] must be executed only when the dom is loaded
-	- [ ] must use jquery
-	- [ ] listen to changes on each input checkbox
-		- [ ] if the checkbox is checked, store the amenity id in a variable
-		- [ ] if the checkbox is unchecked, remove the amenity id from a variable
-		- [ ] update the `h4` tag inside the `div` amenities with the list of
+- [x] write `static/scripts/1-hbnb.js`
+	- [x] must be executed only when the dom is loaded
+	- [x] must use jquery
+	- [x] listen to changes on each input checkbox
+		- [x] if the checkbox is checked, store the amenity id in a variable
+		- [x] if the checkbox is unchecked, remove the amenity id from a variable
+		- [x] update the `h4` tag inside the `div` amenities with the list of
 			  checked amenities
 
 ## 3. api status
@@ -62,6 +62,42 @@ make the filters section dynamic
 - `web_dynamic/templates/2-hbnb.html`
 - `web_dynamic/static/styles/3-header.css`
 - `web_dynamic/static/scripts/2-hbnb.js`
+
+- [x] update `app.py`
+	- [x] replace `CORS(app, origins="0.0.0.0")` with
+		  `CORS(app, resources={r"/api/v1/*": {"origins": "*"}})`
+
+- [x] create duplicate `2-hbnb.py`
+	- [x] update route to `2-hbnb`
+
+- [x] create duplicate `2-hbnb.html`
+	- [x] replace js import to `2-hbnb.js` in `<head>`
+	- [x] in `<header>` add new `<div>`
+		- [x] attribute id should be `api_status`
+		- [x] align to the right
+		- [x] circle of 40px diameter
+		- [x] center vertically
+		- [x] at 30px of the right border
+		- [x] background color #cccccc
+
+		- [x] for this new element add the class `available` to `3-header.css`
+			- [x] background color #ff545f
+
+- [x] create duplicate `2-hbnb.js`
+	- [x] request `http://0.0.0.0:5001/api/v1/status`
+		- [x] if 'OK' add the class `available` to `div#api_status`
+		- [x] remove the class `available` from `div#api_status`
+
+start the api on port 5001:
+```sh
+HBNB_MYSQL_USER=hbnb_dev \
+HBNB_MYSQL_PWD=hbnb_dev_pwd \
+HBNB_MYSQL_HOST=localhost \
+HBNB_MYSQL_DB=hbnb_dev_db \
+HBNB_TYPE_STORAGE=db \
+HBNB_API_PORT=5001 \
+python3 -m api.v1.app
+```
 
 ## 4. fetch places
 

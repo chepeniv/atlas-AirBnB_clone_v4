@@ -7,7 +7,7 @@ from models.city import City
 from models.place import Place
 
 @view_route('/places_search', 'POST')
-def create_place(city_id):
+def search_places():
     '''
     retrieves places based on given json object
     '''

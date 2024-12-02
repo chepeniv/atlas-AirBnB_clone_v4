@@ -1,9 +1,17 @@
 #!/usr/bin/bash
-# run with sudo
 
 clear;
+
 echo "usage : "
-echo "sudo sh start_web_dynamic.sh path/to/script.py"
+echo "sudo sh start_web_dynamic.sh path/to/script.py\n"
+
+# if you don't know how to track down and terminate orphaned process
+# just run start_api_v1.sh first on a separate terminal before
+# executing this script and leave the following commented-out
+
+# sh start_api_v1.sh & cat api_v1.out
+
+echo " **** web dynamic flask started **** "
 
 module=$(basename $1 .py);
 

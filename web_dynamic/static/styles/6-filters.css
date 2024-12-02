@@ -45,8 +45,8 @@
 	overflow: scroll;
 }
 
-ul {
-	list-style: none;
+.popover li input {
+	margin-right: 10px;
 }
 
 .popover h2 {
@@ -57,24 +57,12 @@ ul {
 	visibility: visible;
 }
 
-.locations:hover .popover {
-	visibility: visible;
-}
-
-li:hover {
-	background-color: #FF5A5F;
-	color: white;
-	border-radius: 4px;
-}
-
-li li:hover {
-	background-color: #FAFAFA;
-	color: #FF5A5F;
-	border-radius: 4px;
-}
-
 .locations {
 	border-right: 1px solid #DDDDDD;
+}
+
+.locations:hover .popover {
+	visibility: visible;
 }
 
 .search {
@@ -97,3 +85,24 @@ li li:hover {
 .search:hover {
 	opacity: 0.9;
 }
+
+li ul {
+	padding-left: inherit;
+}
+
+ul {
+	list-style: none;
+}
+
+li:hover {
+	background-color: #FF5A5F;
+	color: white;
+	border-radius: 4px;
+}
+
+li li:hover {
+	background-color: #FAFAFA;
+	color: #FF5A5F;
+	border-radius: 4px;
+}
+

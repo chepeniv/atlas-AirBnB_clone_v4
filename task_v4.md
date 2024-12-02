@@ -3,7 +3,7 @@
 ## 0. last clone
 
 - `README.md`
-	- [ ] update authors
+	- [x] update authors
 	- [ ] update description
 
 ## 1. cash only
@@ -38,13 +38,13 @@ make the filters section dynamic
 - `static/scripts/1-hbnb.js`
 
 - [x] in `1-hbnb.py` replace the route `0-hbnb` with `1-hbnb`
-- [ ] update `1-hbnb.html`
+- [x] update `1-hbnb.html`
 	- [x] import jquery and `static/scripts/1-hbnb.js` in the `<head>` tag
-	- [ ] add `<input type="checkbox">` to each amenity `<li>`
-		- [ ] checkbox must be 10px to the left of the amenity name
-	- [ ] for each `input` tag of amenities
-		- [ ] add `data-id":amenity_id`
-		- [ ] add `data-name":amenity_name`
+	- [x] add `<input type="checkbox">` to each amenity `<li>`
+		- [x] checkbox must be 10px to the left of the amenity name
+	- [x] for each `input` tag of amenities
+		- [x] add `data-id=":amenity_id"`
+		- [x] add `data-name=":amenity_name"`
 
 - [ ] write `static/scripts/1-hbnb.js`
 	- [ ] must be executed only when the dom is loaded

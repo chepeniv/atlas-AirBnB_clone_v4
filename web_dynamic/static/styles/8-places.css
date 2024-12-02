@@ -20,17 +20,6 @@
 	border-radius: 4px;
 }
 
-/*
-.places:hover {
-	article:hover {
-		border: 1px solid #FF5A5F;
-	}
-	article {
-		border: 1px solid #DDDDDD;
-	}
-}
- */
-
 .places article > h2 {
 	grid-area: 1 / 1 / 2 / 3;
 	align-self: start;

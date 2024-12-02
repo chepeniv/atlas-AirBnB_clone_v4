@@ -37,7 +37,7 @@
 	href="../static/images/icon.png?{{ cache_id }}">
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="1-hbnb.js"></script>
+	<script type="text/javascript" src="../static/scripts/1-hbnb.js"></script>
 
 </head>
 
@@ -71,13 +71,14 @@
 			<div class="amenities">
 				<h3>Amenities</h3>
 				<h4>&nbsp;</h4>
+
 				<ul class="popover">
 					{% for amenity in amenities|sort(attribute="name") %}
 					<li>
 						<input
 						type="checkbox"
-						data-id=":{{ amenity.id }}"
-						data-name=":{{ amenity.name }}"/>
+						data-id="{{ amenity.id }}"
+						data-name="{{ amenity.name }}"/>
 						{{ amenity.name }}
 					</li>
 					{% endfor %}

@@ -1,12 +1,22 @@
-$(function () { // function executes once DOM is loaded
-  const amen = {};
-  $('div.amenities input[type="checkbox"]').change(function () { // listen for changes on checkbox
-    if ($(this).is(':checked')) {
-      amen[$(this).data('id')] = $(this).data('name'); // if checked, add to amen
+#!/usr/bin/node
+/* global $ */
+
+$(function () {
+  const amenities = {};
+
+  $('div.amenities input[type="checkbox"]').change(function () {
+    const element = $(this);
+    const dataId = element.attr('data-id');
+    const dataName = element.attr('data-name');
+
+    if (element.is(':checked')) {
+      amenities[dataId] = dataName;
     } else {
-      delete amen[$(this).data('id')]; // if not, delete from amen
+      delete amenities[dataId];
     }
-    $('div.amenities h4').text(Object.values(amen).join(', ')); // display amen list
+
+    const amenityValues = Object.values(amenities);
+    $('div.amenities h4').text(amenityValues);
   }
   );
 });

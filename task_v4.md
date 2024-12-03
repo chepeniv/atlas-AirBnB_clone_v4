@@ -134,13 +134,13 @@ places should now be loaded from the front-end instead of from the back-end
 			- `cities`: list of `Cities` ids
 			- `amenities`: list of `Amenity` ids
 		- search rules :
-			- [ ] if the http request body is not valid json, raise `400` error
+			- [x] if the http request body is not valid json, raise `400` error
 				  with message `Not a JSON`
-			- [ ] if the json body is empty or each of the keys are empty,
+			- [x] if the json body is empty or each of the keys are empty,
 				  retrieve all `Place` objects
-			- [ ] if `cities` list is not empty, include all `Place` for each city
+			- [x] if `cities` list is not empty, include all `Place` for each city
 				  id listed
-			- [ ] keys `cities` and `states` are related by set union
+			- [x] keys `cities` and `states` are related by set union
 				- CAUTION: do not list `cities`'s `Places` items twice
 			- [ ] if `amenities` list is not empty, limit search results ONLY to
 				  `Place` objects that match ALL `Amenity` ids listed
@@ -148,6 +148,12 @@ places should now be loaded from the front-end instead of from the back-end
 
 ## 5. filter places by amenity
 
-- `web_dynamic/4-hbnb.py`
-- `web_dynamic/templates/4-hbnb.html`
-- `web_dynamic/static/scripts/4-hbnb.js`
+- `web_dynamic/4-hbnb.py` based an `3-hbnb.py`
+- [ ] replace route with `4-hbnb`
+
+- `web_dynamic/templates/4-hbnb.html` based on `3-hbnb.html`
+- [ ] replace js import with `4-hbnb.js` in `<head>`
+
+- `web_dynamic/static/scripts/4-hbnb.js` based on `3-hbnb.js`
+- [ ] when `button` tag is clicked a new `POST` request is made to
+	  `places_search` with the list of amenities checked

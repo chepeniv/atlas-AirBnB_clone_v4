@@ -52,6 +52,7 @@ def search_places():
         for place in all_places:
             for amenity_id in given_amenities:
                 if amenity_id not in place.get('amenities'):
+                    pass
         # [UNDER CONSTRUCTION]
         # if no amenity, from amenities given, is absent in place
         # add to filtered_places

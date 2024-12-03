@@ -129,11 +129,11 @@ places should now be loaded from the front-end instead of from the back-end
 - [ ] update `api/v1/views/places.py`
 	- [x] add endpoint `POST /api/v1/places_search` that retrieves all `Place`
 		  objects dependant on the json body request
-		- [ ] json may contain
-			- [ ] `states`: list of `State` ids
-			- [ ] `cities`: list of `Cities` ids
-			- [ ] `amenities`: list of `Amenity` ids
-		- [ ] search rules :
+		- json may contain
+			- `states`: list of `State` ids
+			- `cities`: list of `Cities` ids
+			- `amenities`: list of `Amenity` ids
+		- search rules :
 			- [ ] if the http request body is not valid json, raise `400` error
 				  with message `Not a JSON`
 			- [ ] if the json body is empty or each of the keys are empty,

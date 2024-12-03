@@ -25,10 +25,15 @@ def view_route(*params):
             strict_slashes=False))(func)
     return inner
 
+
 def extract_json():
+    '''
+    handles given json
+    '''
     if not request.is_json:
         abort(400, "Not a JSON")
     return request.get_json()
+
 
 def get_all_objects(model_class):
     '''

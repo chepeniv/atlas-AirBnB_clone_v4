@@ -6,7 +6,9 @@ add more subtask for any issues that arise
 
 ### top priority
 
+- [ ] update `README.md` with instructions on how to setup and run the web app
 - [ ] `api/v1/views/places.py`
+- [ ] complete `places.py def search_places()`
 
 ### bottom priority
 
@@ -15,10 +17,6 @@ add more subtask for any issues that arise
 - [ ] create `data/100-dump.txt` based on `data/100-dump.sql`
 
 ## queue
-
-- [ ] 0. (6pt) last clone --  `README.md`
-	- [x] update authors
-	- [ ] update description
 
 - [ ] 4. (24pt) fetch places
 - `web_dynamic/3-hbnb.py`
@@ -42,6 +40,9 @@ add more subtask for any issues that arise
 - [x] reformat `data/100-hbnb.sql` and rename to `data/100-dump.sql`
 
 - [x] install `flasgger`
+
+- [x] 0. (6pt) last clone --  `README.md`
+	- [x] update authors
 
 - [x] 1. (10pt) cash only
 - `0-hbnb.py`

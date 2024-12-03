@@ -27,7 +27,6 @@ $(function () {
     }
   });
 
-
   $.ajax({
     url: 'http://localhost:5001/api/v1/places_search',
     type: 'POST',
@@ -58,11 +57,6 @@ $(function () {
     error: function (error) {
       console.error('Error in fetching places:', error);
     }
-
-
-      
-
-
     // send POST with content-type: application/json with an empty dict in
     // the body :
     // curl "http://0.0.0.0:5001/api/v1/places_search" -XPOST -H "Content-Type: application/json" -d '{}'`

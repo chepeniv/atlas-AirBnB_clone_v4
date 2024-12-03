@@ -13,7 +13,7 @@ echo "sudo sh start_web_dynamic.sh path/to/script.py\n"
 
 echo " **** web dynamic flask started **** "
 
-module=$(basename $1 .py);
+module=$(basename "$1" .py);
 
 # HBNB_MODELS_ROOT=../models \
 # HBNB_API_HOST=0.0.0.0 \

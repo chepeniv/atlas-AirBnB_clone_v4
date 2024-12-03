@@ -11,11 +11,20 @@ def search_places():
     '''
     retrieves places based on given json object
     '''
+    # DESC:
     # json keys states, cities, amenties
     # if json invalid, return 400
     # if json (or every key) is empty return all places
     # caution: avoid duplicate items
     # filter by ALL amenities given
+    #
+    # LOGIC:
+    # get all places
+    # if states not empty
+    #       for each state in states
+    #           if place.state_id != state.id
+    #               remove place from places
+
     pass
 
 

@@ -2,45 +2,68 @@
 """
 Handles app_views for Place class
 """
+import json
 from api.v1.views.service_calls import *
+from models.state import State
 from models.city import City
 from models.place import Place
+
 
 @view_route('/places_search', 'POST')
 def search_places():
     '''
-    retrieves places based on given json object
+    retrieves places based on a given json object of the form
+    { states: [state_ids], cities: [city_ids], amenities: [amenity_ids]}
     '''
-    #### DESC: ####
-    #
-    # json keys states, cities, amenties
-    #
-    #### LOGIC: ####
-    #
-    # extract given json
-    # if json invalid
-    #       return 400 with message 'Not a JSON'
-    #
-    # if json is empty (or all keys are empty)
-    #       get and return all places
-    #
-    # declare data structure with only unique items all_cities
-    # or call method on it later to remove duplicates
-    #
-    # add every city from each state to all_cities
-    # add cities explicitly given to all_cities as well
-    #
-    # declare all_places
-    # if all_cities is not empty
-    #       for each city fetch places and add to all_places
-    # else add all places to all_places
-    #
-    # declare filtered_places
-    # iterate through each place in all_places
+    # if json is invalid this should abort the entire call
+    data = extract_json();
+
+    # or if all keys are empty
+    if data.values() is None:
+        return get_all_objects(Place)
+
+    given_cities = data.get('cities')
+    given_states = data.get('states')
+    given_amenities = data.get('amenities')
+
+    all_cities = set()
+    all_places = set()
+    filtered_places = list()
+
+    if given_cities is not None:
+        given_cities = set(given_cities)
+        all_cities.union(given_cities)
+
+    # change from city objects to only city_ids
+    # use map ?
+    if given_states is not None:
+        for state_id in given_states:
+            state_cities = get_all_objects_from(State, state_id, 'cities')
+            state_cities = json.loads(state_cities)
+            state_cities = set(state_cities)
+            all_cities.union(state_cities)
+
+    # change from place objects to only place_ids
+    # use map ?
+    if all_cities is not None:
+        for city_id in all_cities:
+            city_places = get_all_objects_from(City, city_id, 'places')
+            city_places = json.loads(city_places)
+            city_places = set(city_places)
+            all_places.union(city_places)
+    else:
+        all_places = get_all_objects(Place)
+
+    for place in all_places:
+        for amenity_id in given_amenities:
+            if amenity_id not in place.get('amenities'):
+
+    #       [under construction]
     #       if no amenity, from amenities given, is absent in place
     #       add to filtered_places
-    # return filtered_places
-    pass
+
+    filtered_places = json.dumps(filtered_places)
+    return filtered_places
 
 
 @view_route('/cities/<city_id>/places', 'POST')
@@ -69,7 +92,7 @@ def get_places(city_id):
     '''
     returns json list of all places found for a given state
     '''
-    return get_all_objects_from(City, city_id, 'cities')
+    return get_all_objects_from(City, city_id, 'places')
 
 
 @view_route('/places/<place_id>', 'GET')

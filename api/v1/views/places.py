@@ -33,13 +33,13 @@ def search_places():
     filtered_places = list()    # Place.to_dict()'s
 
     if given_cities is not None:
-        all_cities.union(set(given_cities))
+        all_cities.update(set(given_cities))
 
     if given_states is not None:
         for state_id in given_states:
             state_cities = get_all_objects_from(State, state_id, 'cities')
             state_cities = map(extract_id, state_cities)
-            all_cities.union(set(state_cities))
+            all_cities.update(set(state_cities))
 
     if len(all_cities) > 0:
         for city_id in all_cities:
@@ -50,13 +50,10 @@ def search_places():
 
     if given_amenities is not None:
         for place in all_places:
-            for amenity_id in given_amenities:
-                if amenity_id not in place.get('amenities'):
-                    pass
-        # [UNDER CONSTRUCTION]
-        # if no amenity, from amenities given, is absent in place
-        # add to filtered_places
-
+            if all(amenity_id in place.get('amenities', []) for amenity_id in given_amenities):
+                filtered_places.append(place)
+    else:
+        filtered_places = list(all_places)
     return filtered_places
 
 
@@ -71,11 +68,11 @@ def create_place(city_id):
         child=Place,
         required=[
             'name',
-            'user_id'
-            'description'
-            'number_rooms'
-            'number_bathrooms'
-            'max_guest'
+            'user_id',
+            'description',
+            'number_rooms',
+            'number_bathrooms',
+            'max_guest',
             'price_by_night'
         ],
         parent_id={'city_id': city_id})
@@ -95,7 +92,7 @@ def get_place(place_id):
     returns json dict place found provided place_id
     if not such place exist 404 error is raised
     '''
-    return get_single_object(place, place_id)
+    return get_single_object(Place, place_id)
 
 
 @view_route('/places/<place_id>', 'PUT')

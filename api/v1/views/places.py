@@ -101,7 +101,7 @@ def update_place(place_id):
     updates the place object found via the place_id
     if not such place exist 404 error is raised
     '''
-    return update_object(place, place_id)
+    return update_object(Place, place_id)
 
 
 @view_route('/places/<place_id>', 'DELETE')
@@ -110,4 +110,4 @@ def delete_place(place_id):
     deletes the place object found via the place_id
     if not such place exist 404 error is raised
     '''
-    return delete_object(place, place_id)
+    return delete_object(Place, place_id)

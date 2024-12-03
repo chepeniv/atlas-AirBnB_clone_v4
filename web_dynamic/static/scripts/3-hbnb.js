@@ -32,7 +32,7 @@ $(function () {
     type: 'POST',
     contentType: 'application/json',
     data: '{}', // empty dict
-    success: function (place) {
+    success: function (places) {
       $('section.places').empty(); // clear the section
 
       for (const place of places) { // loop through the places

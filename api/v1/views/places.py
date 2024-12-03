@@ -43,7 +43,7 @@ def search_places():
 
     if len(all_cities) > 0:
         for city_id in all_cities:
-            city_places = get_all_objects_from(City, city_id, 'places')
+            city_places = get_places(city_id)
             all_places.union(set(city_places))
     else:
         all_places = get_all_objects(Place)

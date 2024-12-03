@@ -18,7 +18,7 @@ def search_places():
     { states: [state_ids], cities: [city_ids], amenities: [amenity_ids]}
     '''
     # if json is invalid this should abort the entire call
-    data = extract_json();
+    data = extract_json()
 
     # if all keys are empty then flow of logic will still return all places
     if data == {}:

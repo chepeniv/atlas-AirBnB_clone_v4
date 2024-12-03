@@ -6,6 +6,7 @@ from api.v1.views.service_calls import *
 from models.state import State
 from models.city import City
 from models.place import Place
+from flask import jsonify
 
 
 def extract_id(item):
@@ -44,7 +45,7 @@ def search_places():
     if len(all_cities) > 0:
         for city_id in all_cities:
             city_places = get_places(city_id)
-            all_places.union(set(city_places))
+            all_places.update(set(city_places))
     else:
         all_places = get_all_objects(Place)
 
@@ -54,7 +55,7 @@ def search_places():
                 filtered_places.append(place)
     else:
         filtered_places = list(all_places)
-    return filtered_places
+    return jsonify(filtered_places)
 
 
 @view_route('/cities/<city_id>/places', 'POST')

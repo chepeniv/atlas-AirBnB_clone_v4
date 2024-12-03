@@ -32,6 +32,11 @@ $(function () {
     type: 'POST',
     contentType: 'application/json',
     data: '{}', // empty dict
+    cache: false,
+    headers: {
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache'
+    },
     success: function (places) {
       $('section.places').empty(); // clear the section
 

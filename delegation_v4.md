@@ -4,14 +4,15 @@ add more subtask for any issues that arise
 
 ## in progress
 
-- [ ] fix text display css issue with `.filters > div > h4`
-- [ ] implement no-caching for all indirectly loaded assets
-
-- [ ] create `data/100-dump.txt` based on `data/100-dump.sql`
-
-## priority
+### top priority
 
 - [ ] `api/v1/views/places.py`
+
+### bottom priority
+
+- [ ] fix text display css issue with `.filters > div > h4`
+- [ ] implement no-caching for all indirectly loaded assets
+- [ ] create `data/100-dump.txt` based on `data/100-dump.sql`
 
 ## queue
 

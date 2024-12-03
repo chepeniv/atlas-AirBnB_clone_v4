@@ -28,8 +28,11 @@ $(function () {
   });
 
   $.get('http://localhost:5001/api/v1/places_search/', function (data, stat) {
-    // send post with content-type: application/json
-    // loop through the request result and create an article for each place
-    // extracted in section.places
+    // send POST with content-type: application/json with an empty dict in
+    // the body :
+    // curl "http://0.0.0.0:5001/api/v1/places_search" -XPOST -H "Content-Type: application/json" -d '{}'`
+    // loop through the request result and create an article in section.places
+    // for each place extracted
+    // owner tag in the place description may be removed
   });
 });

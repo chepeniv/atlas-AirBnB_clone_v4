@@ -114,7 +114,7 @@ python3 -m api.v1.app
 
 - [x] create duplicate `3-hbnb.js`
 	- [x] request `http://0.0.0.0:5001/api/v1/places_search`
-		- [x] add this endpoint via the link provided
+		- [x] construct this endpoint via the link provided (`places.py`)
 		- [ ] send a `POST` request with `content-type: application/json` with an
 			  empty dictionary in the body
 		- `curl "http://0.0.0.0:5001/api/v1/places_search" -XPOST -H "Content-Type: application/json" -d '{}'`

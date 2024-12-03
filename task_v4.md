@@ -149,10 +149,10 @@ places should now be loaded from the front-end instead of from the back-end
 ## 5. filter places by amenity
 
 - `web_dynamic/4-hbnb.py` based an `3-hbnb.py`
-- [ ] replace route with `4-hbnb`
+- [x] replace route with `4-hbnb`
 
 - `web_dynamic/templates/4-hbnb.html` based on `3-hbnb.html`
-- [ ] replace js import with `4-hbnb.js` in `<head>`
+- [x] replace js import with `4-hbnb.js` in `<head>`
 
 - `web_dynamic/static/scripts/4-hbnb.js` based on `3-hbnb.js`
 - [ ] when `button` tag is clicked a new `POST` request is made to

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""
+'''
 Handles app_views for Place class
-"""
+'''
 from api.v1.views.service_calls import *
 from models.state import State
 from models.city import City
@@ -10,10 +10,16 @@ from models.user import User
 
 
 def extract_id(item):
+    '''
+    return item id string
+    '''
     return item['id']
 
 
 def get_owners(places):
+    '''
+    for every place get owner from storage and add their name
+    '''
     for place in places:
         owner = get_single_object(User, place.get('user_id'))
         owner = owner.get('first_name') + ' ' + owner.get('last_name')
@@ -35,10 +41,10 @@ def search_places():
         get_owners(all_places)
         return all_places
 
+    # setup variables
     given_cities = data.get('cities')
     given_states = data.get('states')
     given_amenities = data.get('amenities')
-
     all_cities = set()          # city_ids
     all_places = set()          # Place.to_dict()'s
     filtered_places = list()    # Place.to_dict()'s
@@ -46,7 +52,7 @@ def search_places():
     if given_cities is not None:
         all_cities.update(set(given_cities))
 
-    # add all cities from every state given to the set
+    # add all cities from every state given to all_cities
     if given_states is not None:
         for state_id in given_states:
             state_cities = get_all_objects_from(State, state_id, 'cities')

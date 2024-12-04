@@ -4,6 +4,38 @@
 $(function () {
   const amenities = {};
 
+  function buildPlaceHtml (place) {
+    const placeHtml = `
+<article>
+<h2>${place.name}</h2>
+<div class="price_by_night">$${place.price_by_night}</div>
+<div class="information">
+    <div class="info_box">
+        <div class="max_guest"></div>
+        <div class="icon_desc">Guests: ${place.max_guest}</div>
+    </div>
+
+    <div class="info_box">
+        <div class="number_rooms"></div>
+        <div class="icon_desc">Bedrooms: ${place.number_rooms}</div>
+    </div>
+
+    <div class="info_box">
+        <div class="number_bathrooms"></div>
+        <div class="icon_desc">Bathrooms: ${place.number_bathrooms}</div>
+    </div>
+</div>
+
+<div class="details">
+    <div class="user">
+        <b>Owner</b>: John Doe
+    </div>
+    <div class="description">${place.description}</div>
+</div>
+</article>`;
+    return placeHtml;
+  }
+
   $('div.amenities input[type="checkbox"]').change(function () {
     const element = $(this);
     const dataId = element.attr('data-id');
@@ -33,25 +65,11 @@ $(function () {
     contentType: 'application/json',
     data: '{}', // empty dict
     success: function (places) {
-      $('section.places').empty(); // clear the section
+      $('section.places').empty();
 
-      for (const place of places) { // loop through the places
-        const articlePlaces = `
-        <article>
-          <div class="title_box">
-            <h2>${place.name}</h2>
-            <div class="price_by_night">$${place.price_by_night}</div>
-          </div>
-          <div class="information">
-            <div class="max_guest">${place.max_guest} Guest${place.max_guest !== 1 ? 's' : ''}</div>
-            <div class="number_rooms">${place.number_rooms} Bedroom${place.number_rooms !== 1 ? 's' : ''}</div>
-            <div class="number_bathrooms">${place.number_bathrooms} Bathroom${place.number_bathrooms !== 1 ? 's' : ''}</div>
-          </div>
-          <div class="description">
-            ${place.description}
-          </div>
-        </article>`;
-        $('section.places').append(articlePlaces); // append the article to the section
+      for (const place of places) {
+        const articlePlaces = buildPlaceHtml(place);
+        $('section.places').append(articlePlaces);
       }
     },
     error: function (error) {
@@ -59,14 +77,14 @@ $(function () {
     }
   });
 
-  $('button').click(function () { // button click
+  $('button').click(function () {
     const checkedAmenities = [];
     $('div.amenities input[type="checkbox"]').each(function () {
-      if ($(this).is(':checked')) { // if checked
-        checkedAmenities.push($(this).data('id')); // push that id
+      if ($(this).is(':checked')) {
+        checkedAmenities.push($(this).data('id'));
       }
     });
-  
+
     $.ajax({
       url: 'http://localhost:5001/api/v1/places_search/',
       type: 'POST',
@@ -75,21 +93,7 @@ $(function () {
       success: function (placesResponse) {
         $('section.places').empty();
         for (const place of placesResponse) {
-          const articlePlaces = `
-          <article>
-            <div class="title_box">
-              <h2>${place.name}</h2>
-              <div class="price_by_night">$${place.price_by_night}</div>
-            </div>
-            <div class="information">
-              <div class="max_guest">${place.max_guest} Guest${place.max_guest !== 1 ? 's' : ''}</div>
-              <div class="number_rooms">${place.number_rooms} Bedroom${place.number_rooms !== 1 ? 's' : ''}</div>
-              <div class="number_bathrooms">${place.number_bathrooms} Bathroom${place.number_bathrooms !== 1 ? 's' : ''}</div>
-            </div>
-            <div class="description">
-              ${place.description}
-            </div>
-          </article>`;
+          const articlePlaces = buildPlaceHtml(place);
           $('section.places').append(articlePlaces);
         }
       },

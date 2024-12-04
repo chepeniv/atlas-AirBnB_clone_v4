@@ -7,8 +7,8 @@ add more subtask for any issues that arise
 ### top priority
 
 - [ ] update `README.md` with instructions on how to setup and run the web app
-- [ ] `api/v1/views/places.py`
-- [ ] complete `places.py def search_places()`
+- [x] `api/v1/views/places.py`
+	- [x] complete `places.py def search_places()`
 
 ### bottom priority
 

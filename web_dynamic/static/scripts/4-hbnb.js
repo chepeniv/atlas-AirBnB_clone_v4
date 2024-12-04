@@ -73,13 +73,11 @@ $(function () {
     type: 'POST',
     contentType: 'application/json',
     data: '{}',
-
-    cache: false,
-    headers: {
-      'Cache-Control': 'no-cache',
-      Pragma: 'no-cache'
-    },
-
+    // cache: false,
+    // headers: {
+    //   'Cache-Control': 'no-cache',
+    //   Pragma: 'no-cache'
+    // },
     success: function (places) { buildPlacesHtml(places); },
     error: function (error) {
       console.error('Error fetching places:', error);
@@ -87,17 +85,18 @@ $(function () {
   });
 
   $('button').click(function () {
+    const button = $(this);
+    const checkedAmenities = [];
+
     // flash the button when clicked
-    $(this).removeClass('search:active');
     setTimeout(function () {
-      $(this).addClass('search:active');
+      button.addClass('search:active');
     }, 1);
 
-    const checkedAmenities = [];
-    $('div.amenities input[type="checkbox"]').each(function () {
-      if ($(this).is(':checked')) {
-        checkedAmenities.push($(this).data('id'));
-      }
+    // collect the amenity_ids of each checked item
+    $('.popover li input:checked').each(function () {
+      const amenityID = $(this).attr('data-id');
+      checkedAmenities.push(amenityID);
     });
 
     $.ajax({
@@ -105,6 +104,7 @@ $(function () {
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({ amenities: checkedAmenities }),
+
       success: function (places) { buildPlacesHtml(places); },
       error: function (error) {
         console.error('Error fetching places:', error);

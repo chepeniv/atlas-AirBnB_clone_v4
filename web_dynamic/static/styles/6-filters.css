@@ -90,6 +90,12 @@
 	opacity: 0.9;
 }
 
+.search:active {
+	background-color: white;
+	color: #FF5A5F;
+	border: 1px solid #FF5A5F;
+}
+
 li ul {
 	padding-left: inherit;
 }

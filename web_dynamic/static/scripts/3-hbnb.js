@@ -78,6 +78,12 @@ $(function () {
   });
 
   $('button').click(function () {
+    // flash the button when clicked
+    $(this).removeClass('search:active');
+    setTimeout(function () {
+      $(this).addClass('search:active');
+    }, 1);
+
     const checkedAmenities = [];
     $('div.amenities input[type="checkbox"]').each(function () {
       if ($(this).is(':checked')) {

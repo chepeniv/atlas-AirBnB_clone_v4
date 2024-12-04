@@ -4,6 +4,47 @@
 $(function () {
   const amenities = {};
 
+  function buildPlace (place) {
+    const placeHtml = `
+<article>
+<h2>${place.name}</h2>
+<div class="price_by_night">$${place.price_by_night}</div>
+<div class="information">
+    <div class="info_box">
+        <div class="max_guest"></div>
+        <div class="icon_desc">Guests: ${place.max_guest}</div>
+    </div>
+
+    <div class="info_box">
+        <div class="number_rooms"></div>
+        <div class="icon_desc">Bedrooms: ${place.number_rooms}</div>
+    </div>
+
+    <div class="info_box">
+        <div class="number_bathrooms"></div>
+        <div class="icon_desc">Bathrooms: ${place.number_bathrooms}</div>
+    </div>
+</div>
+
+<div class="details">
+    <div class="user">
+        <b>Owner</b>: John Doe
+    </div>
+    <div class="description">${place.description}</div>
+</div>
+</article>`;
+    // user name not extracted
+    return placeHtml;
+  }
+
+  function buildPlacesHtml (places) {
+    $('section.places').empty();
+    for (const place of places) {
+      const articlePlaces = buildPlace(place);
+      $('section.places').append(articlePlaces);
+    }
+  }
+
   $('div.amenities input[type="checkbox"]').change(function () {
     const element = $(this);
     const dataId = element.attr('data-id');
@@ -31,42 +72,43 @@ $(function () {
     url: 'http://localhost:5001/api/v1/places_search',
     type: 'POST',
     contentType: 'application/json',
-    data: '{}', // empty dict
+    data: '{}',
+
     cache: false,
     headers: {
       'Cache-Control': 'no-cache',
-      'Pragma': 'no-cache'
+      Pragma: 'no-cache'
     },
-    success: function (places) {
-      $('section.places').empty(); // clear the section
 
-      for (const place of places) { // loop through the places
-        const htmlPlaces = `
-        <article>
-          <div class="title_box">
-            <h2>${place.name}</h2>
-            <div class="price_by_night">$${place.price_by_night}</div>
-          </div>
-          <div class="information">
-            <div class="max_guest">${place.max_guest} Guest${place.max_guest !== 1 ? 's' : ''}</div>
-            <div class="number_rooms">${place.number_rooms} Bedroom${place.number_rooms !== 1 ? 's' : ''}</div>
-            <div class="number_bathrooms">${place.number_bathrooms} Bathroom${place.number_bathrooms !== 1 ? 's' : ''}</div>
-          </div>
-          <div class="description">
-            ${place.description}
-          </div>
-        </article>`;
-        $('section.places').append(htmlPlaces); // append the article to the section
-      }
-    },
+    success: function (places) { buildPlacesHtml(places); },
     error: function (error) {
-      console.error('Error in fetching places:', error);
+      console.error('Error fetching places:', error);
     }
-    // send POST with content-type: application/json with an empty dict in
-    // the body :
-    // curl "http://0.0.0.0:5001/api/v1/places_search" -XPOST -H "Content-Type: application/json" -d '{}'`
-    // loop through the request result and create an article in section.places
-    // for each place extracted
-    // owner tag in the place description may be removed
+  });
+
+  $('button').click(function () {
+    // flash the button when clicked
+    $(this).removeClass('search:active');
+    setTimeout(function () {
+      $(this).addClass('search:active');
+    }, 1);
+
+    const checkedAmenities = [];
+    $('div.amenities input[type="checkbox"]').each(function () {
+      if ($(this).is(':checked')) {
+        checkedAmenities.push($(this).data('id'));
+      }
+    });
+
+    $.ajax({
+      url: 'http://localhost:5001/api/v1/places_search/',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({ amenities: checkedAmenities }),
+      success: function (places) { buildPlacesHtml(places); },
+      error: function (error) {
+        console.error('Error fetching places:', error);
+      }
+    });
   });
 });

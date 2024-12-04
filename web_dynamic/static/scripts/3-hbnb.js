@@ -73,6 +73,13 @@ $(function () {
     type: 'POST',
     contentType: 'application/json',
     data: '{}',
+
+    cache: false,
+    headers: {
+      'Cache-Control': 'no-cache',
+      Pragma: 'no-cache'
+    },
+
     success: function (places) { buildPlacesHtml(places); },
     error: function (error) {
       console.error('Error fetching places:', error);

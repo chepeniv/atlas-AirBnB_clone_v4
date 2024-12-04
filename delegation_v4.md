@@ -6,11 +6,6 @@ add more subtask for any issues that arise
 
 ### top priority
 
-- [ ] 5. (24pt) filter places by amenity
-- `web_dynamic/4-hbnb.py`
-- `web_dynamic/templates/4-hbnb.html`
-- `web_dynamic/static/scripts/4-hbnb.js`
-
 - [ ] update `README.md` with instructions on how to setup and run the web app
 - [x] `api/v1/views/places.py`
 	- [x] complete `places.py def search_places()`
@@ -61,3 +56,8 @@ add more subtask for any issues that arise
 - `web_dynamic/3-hbnb.py`
 - `web_dynamic/templates/3-hbnb.html`
 - `web_dynamic/static/scripts/3-hbnb.js`
+
+- [x] 5. (24pt) filter places by amenity
+- `web_dynamic/4-hbnb.py`
+- `web_dynamic/templates/4-hbnb.html`
+- `web_dynamic/static/scripts/4-hbnb.js`

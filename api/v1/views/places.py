@@ -6,7 +6,6 @@ from api.v1.views.service_calls import *
 from models.state import State
 from models.city import City
 from models.place import Place
-from flask import jsonify
 
 
 def extract_id(item):
@@ -21,7 +20,7 @@ def search_places():
     # if json is invalid this should abort the entire call
     data = extract_json()
 
-    # if all keys are empty then flow of logic will still return all places
+    # if all keys are empty then flow of logic should still return all places
     if data == {}:
         return get_all_objects(Place)
 
@@ -50,12 +49,19 @@ def search_places():
         all_places = get_all_objects(Place)
 
     if given_amenities is not None:
+        given_amenities = set(given_amenities)
         for place in all_places:
-            if all(amenity_id in place.get('amenities', []) for amenity_id in given_amenities):
+            place_amenities = get_all_objects_from(
+                Place,
+                place.get('id'),
+                'amenities')
+            place_amenities = set(map(extract_id, place_amenities))
+            if given_amenities.issubset(place_amenities):
                 filtered_places.append(place)
     else:
         filtered_places = list(all_places)
-    return jsonify(filtered_places)
+
+    return filtered_places
 
 
 @view_route('/cities/<city_id>/places', 'POST')

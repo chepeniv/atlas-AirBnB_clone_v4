@@ -115,10 +115,10 @@ python3 -m api.v1.app
 - [x] create duplicate `3-hbnb.js`
 	- [x] request `http://0.0.0.0:5001/api/v1/places_search`
 		- [x] construct this endpoint via the link provided (`places.py`)
-		- [ ] send a `POST` request with `content-type: application/json` with an
+		- [x] send a `POST` request with `content-type: application/json` with an
 			  empty dictionary in the body
 		- `curl "http://0.0.0.0:5001/api/v1/places_search" -XPOST -H "Content-Type: application/json" -d '{}'`
-		- [ ] loop through the result of the request and create an `<article>` tag
+		- [x] loop through the result of the request and create an `<article>` tag
 			  representing a `Place` in the `section.places` (the owner tag in the
 			  place description may be removed)
 
@@ -126,7 +126,7 @@ places should now be loaded from the front-end instead of from the back-end
 
 ### 4.16 search
 
-- [ ] update `api/v1/views/places.py`
+- [x] update `api/v1/views/places.py`
 	- [x] add endpoint `POST /api/v1/places_search` that retrieves all `Place`
 		  objects dependant on the json body request
 		- json may contain
@@ -142,7 +142,7 @@ places should now be loaded from the front-end instead of from the back-end
 				  id listed
 			- [x] keys `cities` and `states` are related by set union
 				- CAUTION: do not list `cities`'s `Places` items twice
-			- [ ] if `amenities` list is not empty, limit search results ONLY to
+			- [x] if `amenities` list is not empty, limit search results ONLY to
 				  `Place` objects that match ALL `Amenity` ids listed
 				- this key relates to the others via set intersection
 
@@ -155,5 +155,5 @@ places should now be loaded from the front-end instead of from the back-end
 - [x] replace js import with `4-hbnb.js` in `<head>`
 
 - `web_dynamic/static/scripts/4-hbnb.js` based on `3-hbnb.js`
-- [ ] when `button` tag is clicked a new `POST` request is made to
+- [x] when `button` tag is clicked a new `POST` request is made to
 	  `places_search` with the list of amenities checked

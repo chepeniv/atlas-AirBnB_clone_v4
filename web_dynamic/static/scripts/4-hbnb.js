@@ -28,7 +28,7 @@ $(function () {
 
 <div class="details">
     <div class="user">
-        <b>Owner</b>: John Doe
+        <b>Owner</b>: ${place.owner}
     </div>
     <div class="description">${place.description}</div>
 </div>

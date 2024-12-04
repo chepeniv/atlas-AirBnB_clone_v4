@@ -6,10 +6,19 @@ from api.v1.views.service_calls import *
 from models.state import State
 from models.city import City
 from models.place import Place
+from models.user import User
 
 
 def extract_id(item):
     return item['id']
+
+
+def get_owners(places):
+    for place in places:
+        owner = get_single_object(User, place.get('user_id'))
+        owner = owner.get('first_name') + ' ' + owner.get('last_name')
+        place.update({'owner': owner})
+
 
 @view_route('/places_search', 'POST')
 def search_places():
@@ -22,7 +31,9 @@ def search_places():
 
     # if all keys are empty then flow of logic should still return all places
     if data == {}:
-        return get_all_objects(Place)
+        all_places = get_all_objects(Place)
+        get_owners(all_places)
+        return all_places
 
     given_cities = data.get('cities')
     given_states = data.get('states')
@@ -35,12 +46,14 @@ def search_places():
     if given_cities is not None:
         all_cities.update(set(given_cities))
 
+    # add all cities from every state given to the set
     if given_states is not None:
         for state_id in given_states:
             state_cities = get_all_objects_from(State, state_id, 'cities')
             state_cities = map(extract_id, state_cities)
             all_cities.update(set(state_cities))
 
+    # get all the places from all the cities provided
     if len(all_cities) > 0:
         for city_id in all_cities:
             city_places = get_places(city_id)
@@ -48,6 +61,7 @@ def search_places():
     else:
         all_places = get_all_objects(Place)
 
+    # filter out the places that do not have the all the amenities given
     if given_amenities is not None:
         given_amenities = set(given_amenities)
         for place in all_places:
@@ -60,6 +74,8 @@ def search_places():
                 filtered_places.append(place)
     else:
         filtered_places = list(all_places)
+
+    get_owners(all_places)
 
     return filtered_places
 

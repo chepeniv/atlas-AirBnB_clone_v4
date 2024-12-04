@@ -4,7 +4,7 @@
 $(function () {
   const amenities = {};
 
-  function buildPlaceHtml (place) {
+  function buildPlace (place) {
     const placeHtml = `
 <article>
 <h2>${place.name}</h2>
@@ -33,7 +33,16 @@ $(function () {
     <div class="description">${place.description}</div>
 </div>
 </article>`;
+    // user name not extracted
     return placeHtml;
+  }
+
+  function buildPlacesHtml (places) {
+    $('section.places').empty();
+    for (const place of places) {
+      const articlePlaces = buildPlace(place);
+      $('section.places').append(articlePlaces);
+    }
   }
 
   $('div.amenities input[type="checkbox"]').change(function () {
@@ -63,15 +72,8 @@ $(function () {
     url: 'http://localhost:5001/api/v1/places_search',
     type: 'POST',
     contentType: 'application/json',
-    data: '{}', // empty dict
-    success: function (places) {
-      $('section.places').empty();
-
-      for (const place of places) {
-        const articlePlaces = buildPlaceHtml(place);
-        $('section.places').append(articlePlaces);
-      }
-    },
+    data: '{}',
+    success: function (places) { buildPlacesHtml(places); },
     error: function (error) {
       console.error('Error fetching places:', error);
     }
@@ -96,13 +98,7 @@ $(function () {
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({ amenities: checkedAmenities }),
-      success: function (placesResponse) {
-        $('section.places').empty();
-        for (const place of placesResponse) {
-          const articlePlaces = buildPlaceHtml(place);
-          $('section.places').append(articlePlaces);
-        }
-      },
+      success: function (places) { buildPlacesHtml(places); },
       error: function (error) {
         console.error('Error fetching places:', error);
       }

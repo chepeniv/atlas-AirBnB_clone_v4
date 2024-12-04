@@ -18,11 +18,6 @@ add more subtask for any issues that arise
 
 ## queue
 
-- [ ] 4. (24pt) fetch places
-- `web_dynamic/3-hbnb.py`
-- `web_dynamic/templates/3-hbnb.html`
-- `web_dynamic/static/scripts/3-hbnb.js`
-
 - [ ] 5. (24pt) filter places by amenity
 - `web_dynamic/4-hbnb.py`
 - `web_dynamic/templates/4-hbnb.html`
@@ -61,3 +56,8 @@ add more subtask for any issues that arise
 - `web_dynamic/templates/2-hbnb.html`
 - `web_dynamic/static/styles/3-header.css`
 - `web_dynamic/static/scripts/2-hbnb.js`
+
+- [x] 4. (24pt) fetch places
+- `web_dynamic/3-hbnb.py`
+- `web_dynamic/templates/3-hbnb.html`
+- `web_dynamic/static/scripts/3-hbnb.js`

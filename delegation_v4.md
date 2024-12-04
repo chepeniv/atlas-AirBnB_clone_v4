@@ -6,15 +6,12 @@ add more subtask for any issues that arise
 
 ### top priority
 
-- [ ] update `README.md` with instructions on how to setup and run the web app
-- [x] `api/v1/views/places.py`
-	- [x] complete `places.py def search_places()`
+- [ ] fix text display css issue with `.filters > div > h4`
 
 ### bottom priority
 
-- [ ] fix text display css issue with `.filters > div > h4`
-- [ ] implement no-caching for all indirectly loaded assets
-- [ ] create `data/100-dump.txt` based on `data/100-dump.sql`
+- [ ] implement no-caching for all indirectly loaded assets from the
+	  stylesheets
 
 ## queue
 
@@ -23,9 +20,11 @@ add more subtask for any issues that arise
 - [ ] add a `required` list to the attributes of `BaseModel`
 - [ ] implement `destroy all` in console for convenience
 - [ ] reformat `data/7-states_list.sql`
+- [ ] create `data/100-dump.txt` based on `data/100-dump.sql`
 
 ## completed
 
+- [x] update `README.md` with instructions on how to setup and run the web app
 - [x] create sql-reset sh-script
 - [x] reformat `data/100-hbnb.sql` and rename to `data/100-dump.sql`
 
@@ -56,6 +55,8 @@ add more subtask for any issues that arise
 - `web_dynamic/3-hbnb.py`
 - `web_dynamic/templates/3-hbnb.html`
 - `web_dynamic/static/scripts/3-hbnb.js`
+- [x] `api/v1/views/places.py`
+	- [x] complete `places.py def search_places()`
 
 - [x] 5. (24pt) filter places by amenity
 - `web_dynamic/4-hbnb.py`

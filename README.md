@@ -22,6 +22,28 @@ Here’s how our DIY rental empire is structured:
 
 4. **Serialization**: Because Python objects are too cool to exist only in memory. We save them as JSON and pull them back up like a magic trick.
 
+## How to Fire-up the Homepage
+
+make sure you're at the root of this repo
+
+before anything, setup the database
+```sh
+sudo sh init_hbnb_dev.sh
+```
+
+now on one one terminal:
+```sh
+sudo sh start_api_v1.sh
+```
+
+and then on another terminal:
+```sh
+sudo sh start_web_dynamic.sh web_dynamic/4-hbnb.py
+```
+
+control-click one of the links provided. then on the landing page click the link
+to the 4th iteration to then land on the homepage. have fun!
+
 ## How to Use It (No Booking Required)
 1. **Clone it**: Fork it, clone it, download it—whatever floats your boat. Just get the code on your machine.
    ```bash

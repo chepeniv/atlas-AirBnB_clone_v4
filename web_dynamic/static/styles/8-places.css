@@ -94,3 +94,8 @@
 	font-size: 14px;
 	grid-column: span 2;
 }
+
+::selection {
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+}

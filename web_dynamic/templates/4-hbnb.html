@@ -51,8 +51,10 @@
 	<div class="container">
 		<section class="filters">
 			<div class="locations">
-				<h3>States</h3>
-				<h4>&nbsp;</h4>
+				<div>
+					<h3>States</h3>
+					<h4>&nbsp;</h4>
+				</div>
 
 				<ul class="popover">
 					{% for state in states|sort(attribute="name") %}
@@ -70,8 +72,10 @@
 			</div>
 
 			<div class="amenities">
-				<h3>Amenities</h3>
-				<h4>&nbsp;</h4>
+				<div>
+					<h3>Amenities</h3>
+					<h4>&nbsp;</h4>
+				</div>
 
 				<ul class="popover">
 					{% for amenity in amenities|sort(attribute="name") %}

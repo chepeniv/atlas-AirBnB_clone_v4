@@ -51,6 +51,7 @@ $(function () {
     const state = $(this);
     const stateId = state.attr('data-id');
     const stateName = state.attr('data-name');
+    $('.locations div h4').text('');
     $('.selectedItem').removeClass('selectedItem');
 
     let oldStateId = Object.keys(selectedState);
@@ -60,11 +61,10 @@ $(function () {
       selectedCity = {};
       thisState[stateId] = stateName;
       selectedState = thisState;
-      $('.locations div h4').text(stateName);
-      $('.locations div h4').css({ 'font-weight': 'bold' });
+      $('.locations div h3').text(stateName);
     } else {
       selectedState = {};
-      $('.locations div h4').text('');
+      $('.locations div h3').text('States');
     }
   });
 
@@ -75,21 +75,21 @@ $(function () {
     const city = $(this);
     const cityId = city.attr('data-id');
     const cityName = city.attr('data-name');
+    $('.locations div h3').text('States');
     $('.selectedItem').removeClass('selectedItem');
 
     let oldCityId = Object.keys(selectedCity);
     oldCityId = oldCityId[0];
     if (oldCityId !== cityId) {
-	  city.addClass('selectedItem');
+      city.addClass('selectedItem');
       selectedState = {};
       thisCity[cityId] = cityName;
       selectedCity = thisCity;
       $('.locations div h4').text(cityName);
-      $('.locations div h4').css({ 'font-weight': 'normal' });
     } else {
-	  selectedCity = {};
+      selectedCity = {};
       $('.locations div h4').text('');
-	}
+    }
   });
 
   // filter bar feedback based on checked amenities

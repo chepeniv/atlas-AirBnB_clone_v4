@@ -59,14 +59,19 @@
 				<ul class="popover">
 					{% for state in states|sort(attribute="name") %}
 					<li>
-						<h2>{{ state.name }}</h2>
+						<h2
+						class='stateItem'
+						data-id="{{ state.id }}"
+						data-name="{{ state.name }}">
+							{{ state.name }}
+						</h2>
 						<ul>
 							{% for city in state.cities|sort(attribute="name") %}
 							<li
 							class='cityItem'
 							data-id="{{ city.id }}"
 							data-name="{{ city.name }}">
-							{{ city.name }}
+								{{ city.name }}
 							</li>
 							{% endfor %}
 						</ul>

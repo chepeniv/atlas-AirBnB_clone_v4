@@ -44,16 +44,32 @@ $(function () {
     }
   }
 
+  // select state feedback and data caching
+  let selectedState = [];
+  $('.stateItem').click(function () {
+    const thisState = {};
+    const state = $(this);
+    const stateId = state.attr('data-id');
+    const stateName = state.attr('data-name');
+    thisState[stateId] = stateName;
+    selectedState = thisState;
+    selectedCity = [];
+    $('.locations div h4').text(stateName);
+    $('.locations div h4').css({ 'font-weight': 'bold' });
+  });
+
   // selected city feedback and data caching
   let selectedCity = [];
   $('.cityItem').click(function () {
-    const thisCity = {}
+    const thisCity = {};
     const city = $(this);
     const cityId = city.attr('data-id');
     const cityName = city.attr('data-name');
     thisCity[cityId] = cityName;
     selectedCity = thisCity;
+    selectedState = [];
     $('.locations div h4').text(cityName);
+    $('.locations div h4').css({ 'font-weight': 'normal' });
   });
 
   // filter bar feedback based on checked amenities
@@ -103,13 +119,9 @@ $(function () {
       button.addClass('search:active');
     }, 1);
 
-    // collect the amenity_ids of each checked item
-    // $('.popover li input:checked').each(function () {
-    //   const amenityID = $(this).attr('data-id');
-    //   checkedAmenities.push(amenityID);
-    // });
-    const checkedAmenities = Object.keys(amenities);
-    const selectedCityKey = Object.keys(selectedCity);
+    const amenityKeys = Object.keys(amenities);
+    const cityKey = Object.keys(selectedCity);
+    const stateKey = Object.keys(selectedState);
 
     // send request
     $.ajax({
@@ -117,8 +129,9 @@ $(function () {
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({
-        amenities: checkedAmenities,
-        cities: selectedCityKey
+        amenities: amenityKeys,
+        cities: cityKey,
+        states: stateKey
       }),
 
       // construct places from response

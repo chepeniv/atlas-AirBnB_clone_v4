@@ -45,17 +45,27 @@ $(function () {
   }
 
   // select state feedback and data caching
-  let selectedState = [];
+  let selectedState = {};
   $('.stateItem').click(function () {
     const thisState = {};
     const state = $(this);
     const stateId = state.attr('data-id');
     const stateName = state.attr('data-name');
-    thisState[stateId] = stateName;
-    selectedState = thisState;
-    selectedCity = [];
-    $('.locations div h4').text(stateName);
-    $('.locations div h4').css({ 'font-weight': 'bold' });
+    $('.selectedItem').removeClass('selectedItem');
+
+    let oldStateId = Object.keys(selectedState);
+    oldStateId = oldStateId[0];
+    if (oldStateId !== stateId) {
+      state.parent().addClass('selectedItem');
+      selectedCity = {};
+      thisState[stateId] = stateName;
+      selectedState = thisState;
+      $('.locations div h4').text(stateName);
+      $('.locations div h4').css({ 'font-weight': 'bold' });
+    } else {
+      selectedState = {};
+      $('.locations div h4').text('');
+    }
   });
 
   // selected city feedback and data caching
@@ -65,11 +75,21 @@ $(function () {
     const city = $(this);
     const cityId = city.attr('data-id');
     const cityName = city.attr('data-name');
-    thisCity[cityId] = cityName;
-    selectedCity = thisCity;
-    selectedState = [];
-    $('.locations div h4').text(cityName);
-    $('.locations div h4').css({ 'font-weight': 'normal' });
+    $('.selectedItem').removeClass('selectedItem');
+
+    let oldCityId = Object.keys(selectedCity);
+    oldCityId = oldCityId[0];
+    if (oldCityId !== cityId) {
+	  city.addClass('selectedItem');
+      selectedState = {};
+      thisCity[cityId] = cityName;
+      selectedCity = thisCity;
+      $('.locations div h4').text(cityName);
+      $('.locations div h4').css({ 'font-weight': 'normal' });
+    } else {
+	  selectedCity = {};
+      $('.locations div h4').text('');
+	}
   });
 
   // filter bar feedback based on checked amenities

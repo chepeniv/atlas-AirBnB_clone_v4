@@ -51,14 +51,19 @@
 	z-index: 1;
 	max-height: 300px;
 	overflow: scroll;
+
+	h2 {
+		font-size: 16px;
+	}
+
+	li input {
+		margin-right: 10px;
+	}
 }
 
-.popover li input {
-	margin-right: 10px;
-}
-
-.popover h2 {
-	font-size: 16px;
+.selectedItem {
+	border: 1px solid #FF5A5F;
+	border-radius: 4px;
 }
 
 .amenities:hover .popover {
@@ -88,16 +93,16 @@
 
 	border: none;
 	border-radius: 4px;
-}
 
-.search:hover {
-	opacity: 0.9;
-}
+	:hover {
+		opacity: 0.9;
+	}
 
-.search:active {
-	background-color: white;
-	color: #FF5A5F;
-	border: 1px solid #FF5A5F;
+	:active {
+		background-color: white;
+		color: #FF5A5F;
+		border: 1px solid #FF5A5F;
+	}
 }
 
 li ul {

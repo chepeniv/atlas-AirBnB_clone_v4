@@ -37,16 +37,16 @@ def search_places():
 
     # if all keys are empty then flow of logic should still return all places
     if data == {}:
-        all_places = get_all_objects(Place)
-        get_owners(all_places)
-        return all_places
+        found_places = get_all_objects(Place)
+        get_owners(found_places)
+        return found_places
 
     # setup variables
     given_cities = data.get('cities')
     given_states = data.get('states')
     given_amenities = data.get('amenities')
     all_cities = set()          # city_ids
-    all_places = set()          # Place.to_dict()'s
+    found_places = list()       # Place.to_dict()'s
     filtered_places = list()    # Place.to_dict()'s
 
     if given_cities is not None:
@@ -56,21 +56,21 @@ def search_places():
     if given_states is not None:
         for state_id in given_states:
             state_cities = get_all_objects_from(State, state_id, 'cities')
-            state_cities = map(extract_id, state_cities)
-            all_cities.update(set(state_cities))
+            state_cities = set(map(extract_id, state_cities))
+            all_cities.update(state_cities)
 
     # get all the places from all the cities provided
     if len(all_cities) > 0:
         for city_id in all_cities:
-            city_places = get_places(city_id)
-            all_places.update(set(city_places))
+            city_places = get_all_objects_from(City, city_id, 'places')
+            found_places.extend(city_places)
     else:
-        all_places = get_all_objects(Place)
+        found_places = get_all_objects(Place)
 
     # filter out the places that do not have the all the amenities given
-    if given_amenities is not None:
+    if len(given_amenities) > 0:
         given_amenities = set(given_amenities)
-        for place in all_places:
+        for place in found_places:
             place_amenities = get_all_objects_from(
                 Place,
                 place.get('id'),
@@ -79,9 +79,9 @@ def search_places():
             if given_amenities.issubset(place_amenities):
                 filtered_places.append(place)
     else:
-        filtered_places = list(all_places)
+        filtered_places = list(found_places)
 
-    get_owners(all_places)
+    get_owners(filtered_places)
 
     return filtered_places
 

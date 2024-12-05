@@ -44,6 +44,18 @@ $(function () {
     }
   }
 
+  // selected city feedback and data caching
+  let selectedCity = [];
+  $('.cityItem').click(function () {
+    const thisCity = {}
+    const city = $(this);
+    const cityId = city.attr('data-id');
+    const cityName = city.attr('data-name');
+    thisCity[cityId] = cityName;
+    selectedCity = thisCity;
+    $('.locations div h4').text(cityName);
+  });
+
   // filter bar feedback based on checked amenities
   const amenities = {};
   $('div.amenities input[type="checkbox"]').change(function () {
@@ -85,7 +97,6 @@ $(function () {
   // search button behavior
   $('button').click(function () {
     const button = $(this);
-    const checkedAmenities = [];
 
     // flash the button when clicked
     setTimeout(function () {
@@ -93,18 +104,22 @@ $(function () {
     }, 1);
 
     // collect the amenity_ids of each checked item
-    // amenities variable might be better suited here
-    $('.popover li input:checked').each(function () {
-      const amenityID = $(this).attr('data-id');
-      checkedAmenities.push(amenityID);
-    });
+    // $('.popover li input:checked').each(function () {
+    //   const amenityID = $(this).attr('data-id');
+    //   checkedAmenities.push(amenityID);
+    // });
+    const checkedAmenities = Object.keys(amenities);
+    const selectedCityKey = Object.keys(selectedCity);
 
     // send request
     $.ajax({
       url: 'http://localhost:5001/api/v1/places_search/',
       type: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify({ amenities: checkedAmenities }),
+      data: JSON.stringify({
+        amenities: checkedAmenities,
+        cities: selectedCityKey
+      }),
 
       // construct places from response
       success: function (places) { buildPlacesHtml(places); },
